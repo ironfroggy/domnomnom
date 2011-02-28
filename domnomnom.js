@@ -2,6 +2,12 @@
 
     $.fn.domnomnom = function domnomnom(data) {
 
+        if (arguments.length == 2) {
+            var data_obj = {};
+            data_obj[arguments[0]] = arguments[1];
+            return $(this).domnomnom(data_obj);
+        }
+
         $(this).each(function(){
             var template = $(this)
             ,   copy = template.clone()
