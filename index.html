@@ -7,16 +7,19 @@
             $('body').domnomnom({
                 "h1": "DOMNOMNOM",
                 "ul": {
-                    "li": {'span': "one"}
+                    "li": ["one", "two", "three"]
                 }
             });
         });
         </script>
+        <style>
+            .clone-after { display: none; }
+        </style>
     </head>
     <body>
         <h1></h1>
-        <ul class=template>
-            <li class=clone-after><span></span></li>
+        <ul>
+            <li class=clone-after></li>
         </ul>
     </body>
 </html>
