@@ -16,7 +16,11 @@ $.fn.domnomnom = function domnomnom(data) {
             })
         }
 
-        template.replaceWith(copy);
+        if (template.hasClass('clone-after')) {
+            template.parent().append(copy);
+        } else {
+            template.replaceWith(copy);
+        }
     });
 
     return result;
