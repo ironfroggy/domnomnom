@@ -7,7 +7,7 @@
             $('body').domnomnom({
                 "h1": "DOMNOMNOM",
                 "ul": {
-                    "li": ["one", "two", "three"]
+                    "li.slot": ["one", "two", "three"]
                 },
                 "table": {
                     "tr": [
@@ -18,19 +18,24 @@
                     ]
                 }
             });
+            $('body').domnomnom({
+                'ul': {
+                    'li.slot': ["four"]
+                }
+            });
         });
         </script>
         <style>
-            .clone-after { display: none; }
+            [data-clone] { display: none; }
         </style>
     </head>
     <body>
         <h1></h1>
         <ul>
-            <li class=clone-after></li>
+            <li class=slot data-clone=":before"></li>
         </ul>
         <table>
-            <tr>
+            <tr data-clone=":after">
                 <td class=name></td>
                 <td class=age></td>
             </tr>

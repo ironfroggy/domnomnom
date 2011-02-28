@@ -1,11 +1,5 @@
 (function() {
 
-    var default_applies = {
-            LI: "clone-after"
-        ,   TR: "clone-after"
-    }
-    ;
-
     $.fn.domnomnom = function domnomnom(data) {
         var result = $();
         function add_result(r) {
@@ -30,15 +24,20 @@
                 })
             }
 
-            if (template.hasClass('clone-after') || default_applies[template[0].tagName] == "clone-after") {
-                copy.removeClass('clone-after');
+            if (template.attr('data-clone') == ':after') {
                 template.parent().append(copy);
-            } else {
+            } else if (template.attr('data-clone') == ':before') {
+                copy.removeClass('clone-before');
+                template.parent().prepend(copy);
+            } else { // implies data-clone=replace
                 template.replaceWith(copy);
             }
+
+            copy.removeAttr('data-clone');
+            copy.removeClass('slot');
         });
 
-        return result;
+        return $(this);
     };
 
 })();
