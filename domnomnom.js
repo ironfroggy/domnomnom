@@ -5,14 +5,18 @@ $.fn.domnomnom = function domnomnom(data) {
     }
 
     $(this).each(function(){
-        var el = $(this);
+        var template = $(this)
+        ,   copy = template.clone()
+        ;
         if (typeof data === "string") {
-            el.text(data);
+            copy.text(data);
         } else {
             $.each(data, function(key, value) {
-                el.find(key).domnomnom(value);
+                copy.find(key).domnomnom(value);
             })
         }
+
+        template.replaceWith(copy);
     });
 
     return result;
