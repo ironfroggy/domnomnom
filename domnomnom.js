@@ -13,7 +13,6 @@
                 var template = $(this);
                 template.html(template.siblings(template.attr('data-template')).html());
                 template.removeAttr('data-template');
-                console.debug(template, template.html());
             });
         });
 
@@ -31,8 +30,23 @@
                 return;
             } else {
                 $.each(data, function(key, value) {
-                    //console.debug(copy, key, value);
-                    copy.find(key).domnomnom(value);
+                    if (key.indexOf('/') >= 0) {
+                        var _ = key.split('/')
+                        ,   key = _[0]
+                        ,   attribute = _[1]
+                        ,   el = copy.find(key)
+                        ;
+
+                        if (attribute) {
+                            el.attr(attribute, value);
+                        } else {
+                            $.each(value, function(attribute, value) {
+                                el.attr(attribute, value);   
+                            });
+                        }
+                    } else {
+                        copy.find(key).domnomnom(value);
+                    }
                 })
             }
 
