@@ -9,6 +9,15 @@
         }
 
         $(this).each(function(){
+            $(this).find('[data-template]').each(function(){
+                var template = $(this);
+                template.html(template.siblings(template.attr('data-template')).html());
+                template.removeAttr('data-template');
+                console.debug(template, template.html());
+            });
+        });
+
+        $(this).each(function(){
             var template = $(this)
             ,   copy = template.clone()
             ;
@@ -22,6 +31,7 @@
                 return;
             } else {
                 $.each(data, function(key, value) {
+                    //console.debug(copy, key, value);
                     copy.find(key).domnomnom(value);
                 })
             }

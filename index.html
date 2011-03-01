@@ -9,12 +9,18 @@
                 "ul": {
                     "li.slot": ["one", "two", "three"]
                 },
-                "table": {
+                "#P1": {
                     "tr": [
                         {".name": "Bob", ".age": "50"},
                         {".name": "Sarah", ".age": "25"},
                         {".name": "Jane", ".age": "30"},
                         {".name": "Ted", ".age": "15"}
+                    ]
+                },
+                "#P2": {
+                    "tr": [
+                        {".name": "Jack", ".age": "40"},
+                        {".name": "Jill", ".age": "23"}
                     ]
                 }
             });
@@ -36,11 +42,13 @@
         <ul>
             <li class=slot data-clone=":before"></li>
         </ul>
-        <table>
+        <table id=P1 class=people>
             <tr data-clone=":after">
                 <td class=name></td>
                 <td class=age></td>
             </tr>
         </table>
+
+        <table id=P2 data-template=".people"></table>
     </body>
 </html>
