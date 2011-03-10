@@ -34,6 +34,15 @@
                 }
             });
             $('body').domnomnom('h2', 'Testing');
+
+            $('button[name=add]').click(function(){
+                $('#P2').domnomnom({
+                    'tr.slot': [{
+                        '.name': $('[name=name]').val(),
+                        '.age': $('[name=age]').val()
+                    }]
+                });
+            });
         });
         </script>
         <style>
@@ -47,11 +56,21 @@
             <li class=slot data-clone=":before"></li>
         </ul>
         <table id=P1 class=people>
-            <tr data-clone=":after">
+            <tr class=slot data-clone=":after">
                 <td class=name></td>
                 <td class=age></td>
             </tr>
         </table>
+
+        <label for=name>
+            name:
+            <input name=name />
+        </label>
+        <label for=age>
+            age:
+            <input name=age />
+        </label>
+        <button name=add>add</button>
 
         <table id=P2 data-template=".people"></table>
 
